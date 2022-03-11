@@ -69,9 +69,91 @@ Collaboration between developers and security teams resulted in the development 
 
 ## Quick Recap
 
-![image-20220309145328395](D:\learning\img\devops\image-20220309145328395.png)
+![image-20220309145328395](./img/devops/image-20220309145328395.png)
+
+
 
 ## Version Control System
 
 Using Git.
+
+## CI/CD with Jenkins
+
+Continuous Integration (CI): It is a development practice in which all development work is integrated as early as possible.
+
+**Advantages of Continuous Integration are**
+
+- Monitors the health of your code coverage metrics
+- Reduces technical debts and maintenance cost
+- Publicly visible code quality metrics
+- Automated end-to-end acceptance tests
+- Reduces risk by providing faster feedback
+- Helps identify and fix integration and regression
+- Helps simplify and accelerate delivery
+- Automates deployment process
+
+Continuous Delivery (CD): Continuous delivery is an extension of continuous integration. Any successful build can potentially be deployed into production.
+
+Tools of CI/CD: Jenkins, TeamCity, CircleCI, GitLab.
+
+Install Jenkins:
+
+```bash
+# Install java
+java --version
+# Add jenkins public key
+wget -q -O - https://pkg.jenkins.io/debian/jenkins.io.key/ sudo apt-key add -
+sudo sh-c 'echo deb http://pkgjenkins.io/debian-
+stable binary/> /etc/apt/sources.list.d/jenkins.list
+sudo apt-get update
+# Install jenkins
+sudo apt-get install jenkins
+sudo service jenkins status
+# Get password
+sudo cat var/lib/jenkins/secrets/initialAdminPassword
+# Access host
+curl localhost:8080
+```
+
+## Software and Automation Testing Frameworks
+
+Popular software and Automation testing tools
+
+- Testim is the quickest way to create durable end-to-end tests, whether they're codeless, programmed, or both.
+- LambdalTest is a popular tool for performing automated cross-browser testing.
+- Selenium is a software testing tool that's used to perform Regression Testing.
+
+## Configuration Management
+
+- Configuration management (CM) is a system engineering method that ensures a product's characteristics remain consistent during its life cycle. 
+- In the technology world, configuration management is an IT management mechanism that monitors individual configuration items of an IT system.
+
+Features of Configuration Management:
+
+- Enforcement: Prevents configuration drift
+- Concurrency Management: Manages concurrency properly
+- Version Control: Saves every change made to the file
+- Synchronization: Allows to check out more than one file
+
+**Benefits**
+
+- It helps in increasing the efficiency with a well-defined configuration process that improves visibility and provides control with the help of tracking.
+- It helps in cost optimization by having detailed knowledge of all the IT elements of the configuration, which helps to avoid unnecessary duplication.
+- It provides greater agility and faster problem resolution, giving a better quality of service to the consumers.
+- It enhances system and process reliability by detecting and correcting incorrect configurations before a detrimental effect on results.
+-  It also provides faster restoration of your service if a process failure occurs, i.e If the appropriate state of configuration will be known, restoring the working configuration will be much faster and easier.
+
+Role of Configuration Management in DevOps:
+
+- Source Code Repository: Mostly used during the development process
+- Artifact Repository: Used during the production and operations phases of a project
+- Configuration Management Database: Used during the production and operations phases of a project
+
+Configuration Management Tools: Puppet, Chef, Ansible, SaltStack,...
+
+## Containerization with Docker
+
+## 
+
+
 
