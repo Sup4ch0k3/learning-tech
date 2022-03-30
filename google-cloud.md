@@ -997,3 +997,111 @@ Confirm that your external IP address has not changed:
 ```
 kubectl get services
 ```
+
+## Configuring IAM
+
+### Create role CLI
+
+1. Create a new file called role.yaml, run the following command:
+
+```
+nano role.yaml
+```
+
+2. Copy the following role definition and paste into the nano editor in Cloud Shell:
+
+```
+title: App Viewer
+description: Custom role to view apps
+stage: ALPHA
+includedPermissions:
+- compute.instances.get
+- compute.instances.list
+- appengine.versions.get
+- appengine.versions.list
+```
+
+3. Create a new role, run the following command:
+
+```
+gcloud iam roles create app_viewer --project \
+$DEVSHELL_PROJECT_ID --file role.yaml
+```
+
+4. List all the custom roles in your project, run the following command:
+
+```
+gcloud iam roles list --project $DEVSHELL_PROJECT_ID
+```
+
+### Use a custom role
+
+1. On the **Navigation menu**, click **IAM & admin** > **IAM**.
+2. In the IAM console, locate the line for Username and click the `Edit principal` button.
+3. Click **Add another role**, and then click **Select a role**.
+4. In the **Custom category**, select one of the roles you just created.
+5. Click Save.
+
+### Modify role permissions
+
+1. To retrieve the `app_viewer` role's definition, run the following command in Cloud Shell:
+
+```
+gcloud iam roles describe app_viewer --project \
+$DEVSHELL_PROJECT_ID
+```
+
+2. Run the following command to create a new YAML file:
+
+```
+nano update-role.yaml
+```
+
+3. Paste the output from the describe command into the nano editor.
+4. Add the permission just below the `includedPermissions:` lines.
+5. To update the `app_viewer` role, run the following command:
+
+```
+gcloud iam roles update app_viewer --project \
+$DEVSHELL_PROJECT_ID --file update-role.yaml
+```
+
+### Disable a role
+
+To disable the app_viewer role created earlier in this lab, run the following command in Cloud Shell:
+
+```
+gcloud iam roles update app_viewer --project \
+$DEVSHELL_PROJECT_ID --stage DISABLED
+```
+
+### Delete a role
+
+1. To delete the app_viewer role created earlier in this lab, run the following command in Cloud Shell:
+
+```
+gcloud iam roles delete app_viewer --project \
+$DEVSHELL_PROJECT_ID
+```
+
+2. To list all the roles in the project, run the following command:
+
+```
+gcloud iam roles list --project $DEVSHELL_PROJECT_ID
+```
+
+3. To list all the roles in the project including the deleted roles, run the following command:
+
+```
+gcloud iam roles list --project $DEVSHELL_PROJECT_ID \
+--show-deleted
+```
+
+### Un-delete a role
+
+Role can be un-deleted within 7 days of being deleted. To un-delete the app_viewer role, run the following command in Cloud Shell:
+
+```
+gcloud iam roles undelete app_viewer --project \
+$DEVSHELL_PROJECT_ID
+```
